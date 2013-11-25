@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>mongo4log4net</id>
+    <version>1.0.4178.18314</version>
+    <title>mongo4log4net</title>
+    <authors>Wes McClure</authors>
+    <owners>Wes McClure</owners>
+    <licenseUrl>https://github.com/g0t4/DotNetExtensions</licenseUrl>
+    <projectUrl>https://github.com/g0t4/DotNetExtensions</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A mongo appender for log4net.</description>
+    <summary>A mongo appender for log4net.</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>mongo log4net appender</tags>
+    <dependencies>
+      <dependency id="log4net" version="1.2.10" />
+      <dependency id="mongocsharpdriver" version="1.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,9 @@
+http://ucexperiment.wordpress.com/2012/03/22/detect-gps-crossing-a-boundary-line/
+https://forum.sparkfun.com/viewtopic.php?f=17&t=30672
+http://ucexperiment.wordpress.com/2012/03/26/detect-gps-crossing-a-boundary-line-v2-0/
+
+http://www.arduinodev.com/mtk3329-10hz-gps-module-with-arduino/
+
+http://www.seancarney.ca/projects/arduino-gps-receiver/arduino-gps-system
+http://arduino.cc/forum/index.php?PHPSESSID=ef6a32fd5b3afcbc2270d1eb180e93ca&topic=15112.15
+http://www.wateb.com/arduino-gps-shield-lcd-16x2/

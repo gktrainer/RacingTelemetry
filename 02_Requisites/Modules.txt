@@ -1,0 +1,31 @@
+- Módulo Windows
+Manutenção de Perfis
+Manutenção de Veículos
+	Manutenção de Setups
+Manutenção de Pistas
+	Manutenção de Traçados por Pista
+		Manuntenção de Marcações
+Manutenção de Sessões
+	Visualização de tempos
+	Visualização de trajeto integrado com Google Maps
+Importação
+	Arquivo de log de sessões
+Exportação
+	Arquivo de configuração de pistas
+	Arquivo de configuração do arduíno (Unidade de medida, display, etc)
+Opções
+	Configurações Módulo Windows
+		Modo de Unidade de Medida
+			Sistema Métrico
+			Sistema Inglês
+	Configurações Módulo Arduino
+		Modo de Unidade de Medida
+			Sistema Métrico
+			Sistema Inglês
+		Display
+			Contraste
+- Módulo Arduino
+	Módo Trilha	
+	Modo Circuito
+		Criar Sessão
+			Escolher pista

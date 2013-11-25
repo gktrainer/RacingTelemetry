@@ -1,0 +1,11 @@
+<mm_project serial_port="COM6" board="Arduino Uno" programmer="" includePaths="" libPaths="" libs="" default="no" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
+  <files>
+    <file name="HelloWord_Xbee_main.cpp" open="yes" />
+    <file name="helloword_xbee_main.h" open="no" />
+  </files>
+  <extras>
+  </extras>
+  <externals>
+    <external name="F:\Install\arduino-1.0.5\libraries\SoftwareSerial\SoftwareSerial.cpp" />
+  </externals>
+</mm_project>

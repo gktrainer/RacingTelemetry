@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+
+        function googleMapApi() {
+            var map;
+            var pathPoints = [];
+            var linePath;
+
+            this.initialize = function (Lat, Lng) {
+                var myLatlng = new google.maps.LatLng(parseFloat(Lat), parseFloat(Lng));
+                var mapOptions = {
+                    minZoom: 10,
+                    maxZoom: 30,
+                    zoom: 25,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.SATELLITE
+                }
+                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            };
+
+            this.createPath = function (points) {
+                for (var point in points) {
+                    pathPoints.push(new google.maps.LatLng(parseFloat(point.Lat), parseFloat(point.Lng));
+                }
+
+                linePath = new google.maps.Polyline({
+                    path: pathPoints,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                });
+            }
+
+            google.maps.event.addDomListener(window, 'load', this.initialize);
+        }
+
+        var mapApi = new googleMapApi();
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>

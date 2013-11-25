@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        html, body, #map-canvas
+        {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="/Js/json2.js"></script>
+    <script>
+
+        function googleMapApi() {
+            var map;
+            var line;
+            var lines = [];
+            var path;
+            var currentType;
+
+            this.getLines = function () {
+                var linesReturn = []
+                if (lines.length > 0) {
+                    for (var i = 0; i < lines.length; i++) {
+                        linesReturn.push({ type: lines[i].type, position: lines[i].line.latLngs.b[0].b });
+                    }
+                }
+                return JSON.stringify(linesReturn);
+            }
+
+            this.clearAllLines = function () {
+                if (lines.length > 0) {
+                    for (var i = 0; i < lines.length; i++) {
+                        var lineItem = Object.create(lines[i].line);
+                        lineItem.setMap(null);
+                    }
+                    lines = [];
+                }
+            }
+
+            this.initialize = function (Lat, Lng) {
+                var myLatlng = new google.maps.LatLng(parseFloat(Lat), parseFloat(Lng));
+                var mapOptions = {
+                    minZoom: 10,
+                    maxZoom: 30,
+                    zoom: 30,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.SATELLITE
+                }
+                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                google.maps.event.addListener(map, 'click', addLatLng);
+            };
+
+            this.setMarkerType = function (type) {
+                currentType = type;
+
+                if (!validateStartFinishLine()) {
+                    return;
+                }
+
+                var color;
+
+                switch (type) {
+                    case 0:
+                        color = '#000000';
+                        break;
+                    case 1:
+                        color = '#FF0000';
+                        break;
+                    case 2:
+                        color = '#0000FF';
+                        break;
+                    default:
+                        break;
+                }
+
+                var polyOptions = {
+                    strokeColor: color,
+                    strokeOpacity: 1.0,
+                    strokeWeight: 3
+                };
+
+                line = null;
+                line = new google.maps.Polyline(polyOptions);
+                line.setMap(map);
+            }
+
+            this.setLine = function (type, LatA, LngA, LatB, LngB) {
+                currentType = type;
+                var color;
+
+                switch (type) {
+                    case 0:
+                        color = '#000000';
+                        break;
+                    case 1:
+                        color = '#FF0000';
+                        break;
+                    case 2:
+                        color = '#0000FF';
+                        break;
+                    default:
+                        break;
+                }
+
+                var linePath = new google.maps.MVCArray();
+                linePath.push(new google.maps.LatLng(parseFloat(LatA), parseFloat(LngA)));
+                linePath.push(new google.maps.LatLng(parseFloat(LatB), parseFloat(LngB)));
+
+                var polyOptions = {
+                    strokeColor: color,
+                    strokeOpacity: 1.0,
+                    strokeWeight: 3,
+                    path: linePath
+                };
+
+                line = null;
+                line = new google.maps.Polyline(polyOptions);
+                line.setMap(map);
+
+                lines.push({ type: type, line: line });
+            }
+
+            function addLatLng(event) {
+                if (line != null && line != undefined) {
+                    path = line.getPath();
+                    if (path.getLength() < 2) {
+                        path.push(event.latLng);
+                        if (path.getLength() == 2) {
+                            lines.push({ type: currentType, line: line });
+                        }
+                    }
+                }
+            }
+
+            function validateStartFinishLine() {
+                if (lines.length > 0) {
+                    for (var i = 0; i < lines.length; i++) {
+                        if (lines[i].type == 0 && currentType == 0) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        }
+
+        var mapApi = new googleMapApi();
+
+    </script>
+</head>
+<body>
+    <div id="map-canvas"></div>
+</body>
+</html>
