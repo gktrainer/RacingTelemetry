@@ -7,3 +7,12 @@ F:\Projetos\Active\RacingTelemetry\ArduinoKartTelemetry\04_Source\Gerenciador\Ra
 F:\Projetos\Active\RacingTelemetry\ArduinoKartTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
 F:\Projetos\Active\RacingTelemetry\ArduinoKartTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\obj\Debug\Business.dll
 F:\Projetos\Active\RacingTelemetry\ArduinoKartTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\obj\Debug\Business.pdb
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\obj\Debug\Business.dll
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\obj\Debug\Business.pdb
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\bin\Debug\Business.dll
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\bin\Debug\Business.pdb
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\bin\Debug\MongoDB.Bson.dll
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\bin\Debug\MongoDB.Driver.dll
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\bin\Debug\MongoDB.Bson.xml
+F:\Projetos\Active\RacingTelemetry\04_Source\Gerenciador\RacingTelemetry.WinManager.Forms\Business\bin\Debug\MongoDB.Driver.xml

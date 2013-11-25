@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\NMEAConverter.cs" />
     <Compile Include="Entities\Enums\SplitMarkerType.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\LogData.cs" />

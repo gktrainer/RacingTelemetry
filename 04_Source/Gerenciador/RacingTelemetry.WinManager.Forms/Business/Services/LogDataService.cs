@@ -40,9 +40,5 @@ namespace Business.Services {
 		public void Delete(LogData logData) {
 			repository.Delete(logData.Id);
 		}
-
-		public static ToNMEA_GPRMCType(this string NMEA_Sentence){
-
-		}
 	}
 }

@@ -17,8 +17,15 @@ namespace Business.Entities {
 		}
 
 		public class NMEA_GPRMC {
+			public bool IsValid { get; set; }
 			public DateTime TimeLog { get; set; }
-
+			public double? Latitude { get; set; }
+			public double? Longitude { get; set; }
+			public double? SpeedInKmh { get; set; }
+			public double? SpeedInKnots { get; set; }
+			public char Status { get; set; }
+			public double? TrackAngle { get; set; }
+			public double? MagneticVariation { get; set; }
 		}
 	}
 }

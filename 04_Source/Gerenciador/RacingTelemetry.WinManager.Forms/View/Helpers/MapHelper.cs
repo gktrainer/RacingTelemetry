@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using View.Model;
+using Business.Converters;
 
 namespace View.Helpers {
 	public static class MapHelper {
@@ -70,7 +71,7 @@ namespace View.Helpers {
 			List<SplitMarker> retorno = new List<SplitMarker>();
 
 			JSValue retornoMaps = control.ExecuteJavascriptWithResult("mapApi.getLines()").ToString();
-			var linhas = JsonConvert.DeserializeObject<List<Line>>(retornoMaps.ToString());	
+			var linhas = JsonConvert.DeserializeObject<List<Line>>(retornoMaps.ToString());
 
 			foreach (var linha in linhas) {
 				SplitMarker marcacao = new SplitMarker();
@@ -112,8 +113,16 @@ namespace View.Helpers {
 			return null;
 		}
 
-		public void CreatePath(LogData logData, WebControl control) {
+		public static void CreatePath(LogData logData, WebControl control) {
+			var points = logData.NMEASentence
+				.Where(line => line.ToGPRMC().IsValid && line.ToGPRMC().Latitude.HasValue && line.ToGPRMC().Longitude.HasValue)
+				.Select(line => new {
+					Lat = line.ToGPRMC().Latitude.Value.ToString(culture),
+					Lng = line.ToGPRMC().Longitude.Value.ToString(culture)
+				}).ToArray();
 
+			string funcao = string.Format("mapApi.createPath({0})"
+				, JsonConvert.SerializeObject(points));
 		}
 	}
 }

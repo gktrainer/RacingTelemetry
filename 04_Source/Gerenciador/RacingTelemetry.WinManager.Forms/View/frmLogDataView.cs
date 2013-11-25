@@ -57,7 +57,7 @@ namespace View {
 
 				wcMaps.LoadHTML(MapHelper.ReadHtmlPage(mapFile));
 
-
+				MapHelper.CreatePath(currentLogData, wcMaps);
 
 				FormHelper.ShowPanel(panels, pnlLogDataAnalysis);
 				FormHelper.ResizeFormByPanel(this, pnlLogDataAnalysis);
