@@ -12,6 +12,7 @@
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="Js/json2.js"></script>
     <script>
 
         function googleMapApi() {
@@ -32,15 +33,18 @@
             };
 
             this.createPath = function (points) {
-                for (var point in points) {
-                    pathPoints.push(new google.maps.LatLng(parseFloat(point.Lat), parseFloat(point.Lng)));
+                pathPoints = [];
+
+                for (var i = 0; i < points.length; i++) {
+                    pathPoints.push(new google.maps.LatLng(parseFloat(points[i].Latitude), parseFloat(points[i].Longitude)));
                 }
 
                 linePath = new google.maps.Polyline({
                     path: pathPoints,
                     strokeColor: '#FF0000',
                     strokeOpacity: 1.0,
-                    strokeWeight: 2
+                    strokeWeight: 2,
+                    map: map
                 });
             }
 

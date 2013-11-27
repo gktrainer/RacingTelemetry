@@ -25,6 +25,8 @@ namespace View {
 		}
 
 		private void frmLogDataView_Load(object sender, EventArgs e) {
+			wcMaps.LoadHTML(MapHelper.ReadHtmlPage(mapFile));
+			
 			repository = new LogDataRepository();
 			service = new LogDataService(repository);
 
@@ -55,8 +57,8 @@ namespace View {
 			if (dgvLogData.SelectedRows.Count > 0) {
 				LogData currentLogData = (LogData)dgvLogData.SelectedRows[0].DataBoundItem;
 
-				wcMaps.LoadHTML(MapHelper.ReadHtmlPage(mapFile));
-
+				MapHelper.SetPosition(currentLogData.Location, wcMaps);
+				while (!wcMaps.IsRendering) {}				
 				MapHelper.CreatePath(currentLogData, wcMaps);
 
 				FormHelper.ShowPanel(panels, pnlLogDataAnalysis);

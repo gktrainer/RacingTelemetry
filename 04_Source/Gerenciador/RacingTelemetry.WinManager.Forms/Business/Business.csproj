@@ -50,6 +50,7 @@
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\LogData.cs" />
     <Compile Include="Entities\SplitMarker.cs" />
+    <Compile Include="Helpers\GeoCalculatorHelper.cs" />
     <Compile Include="Repositories\ILocationRepository.cs" />
     <Compile Include="Repositories\ILogDataRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />

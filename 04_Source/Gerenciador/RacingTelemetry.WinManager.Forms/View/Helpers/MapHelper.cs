@@ -49,6 +49,7 @@ namespace View.Helpers {
 		}
 
 		public static void SetPosition(Business.Entities.Location location, WebControl control) {
+			while (!control.IsDocumentReady) {}
 			string function = string.Format(
 					"mapApi.initialize('{0}', '{1}')",
 					location.Latitude.ToString(culture),
@@ -114,15 +115,21 @@ namespace View.Helpers {
 		}
 
 		public static void CreatePath(LogData logData, WebControl control) {
-			var points = logData.NMEASentence
-				.Where(line => line.ToGPRMC().IsValid && line.ToGPRMC().Latitude.HasValue && line.ToGPRMC().Longitude.HasValue)
-				.Select(line => new {
-					Lat = line.ToGPRMC().Latitude.Value.ToString(culture),
-					Lng = line.ToGPRMC().Longitude.Value.ToString(culture)
-				}).ToArray();
+			List<PathPointInfo> pathPoints = new List<PathPointInfo>();
+			foreach (string line in logData.NMEASentence) {
+				if (line.ToGPRMC().IsValid && line.ToGPRMC().Latitude.HasValue && line.ToGPRMC().Longitude.HasValue) {
+					PathPointInfo pathPoint = new PathPointInfo() {
+						Latitude = line.ToGPRMC().Latitude.Value.ToString(culture),
+						Longitude = line.ToGPRMC().Longitude.Value.ToString(culture)
+					};
+					pathPoints.Add(pathPoint);
+				}
+			}
 
 			string funcao = string.Format("mapApi.createPath({0})"
-				, JsonConvert.SerializeObject(points));
+				, JsonConvert.SerializeObject(pathPoints.ToArray()));
+
+			control.ExecuteJavascript(funcao);
 		}
 	}
 }
