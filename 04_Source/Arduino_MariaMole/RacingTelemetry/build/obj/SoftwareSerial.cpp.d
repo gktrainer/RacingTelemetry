@@ -1,5 +1,5 @@
  \
- f:\projetos\active\racingtelemetry\arduinokarttelemetry\04_source\arduino_mariamole\RacingTelemetry\build\obj\SoftwareSerial.cpp.o:  \
+ f:\projetos\active\racingtelemetry\04_source\arduino_mariamole\RacingTelemetry\build\obj\SoftwareSerial.cpp.o:  \
  F:\Install\arduino-1.0.5\libraries\SoftwareSerial\SoftwareSerial.cpp \
   F:\Install\arduino-1.0.5\hardware\arduino\cores\arduino/Arduino.h \
   F:\Install\arduino-1.0.5\hardware\arduino\cores\arduino/binary.h \

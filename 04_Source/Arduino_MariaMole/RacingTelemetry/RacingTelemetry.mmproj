@@ -7,5 +7,10 @@
   </extras>
   <externals>
     <external name="F:\Install\arduino-1.0.5\libraries\SoftwareSerial\SoftwareSerial.cpp" />
+    <external name="F:\Install\arduino-1.0.5\libraries\SD\File.cpp" />
+    <external name="F:\Install\arduino-1.0.5\libraries\SD\SD.cpp" />
+    <external name="F:\Install\arduino-1.0.5\libraries\SD\utility\Sd2Card.cpp" />
+    <external name="F:\Install\arduino-1.0.5\libraries\SD\utility\SdFile.cpp" />
+    <external name="F:\Install\arduino-1.0.5\libraries\SD\utility\SdVolume.cpp" />
   </externals>
 </mm_project>

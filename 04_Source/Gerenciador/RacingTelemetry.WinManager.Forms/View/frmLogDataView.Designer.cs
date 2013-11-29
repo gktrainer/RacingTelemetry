@@ -25,14 +25,14 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			this.pnlLogDataViewer = new System.Windows.Forms.Panel();
-			this.pnlLogDataAnalysis = new System.Windows.Forms.Panel();
-			this.dgvLogData = new System.Windows.Forms.DataGridView();
-			this.btnAnalysis = new System.Windows.Forms.Button();
 			this.btnDeleteLogData = new System.Windows.Forms.Button();
+			this.btnAnalysis = new System.Windows.Forms.Button();
+			this.dgvLogData = new System.Windows.Forms.DataGridView();
+			this.pnlLogDataAnalysis = new System.Windows.Forms.Panel();
 			this.wcMaps = new Awesomium.Windows.Forms.WebControl(this.components);
 			this.pnlLogDataViewer.SuspendLayout();
-			this.pnlLogDataAnalysis.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvLogData)).BeginInit();
+			this.pnlLogDataAnalysis.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pnlLogDataViewer
@@ -45,22 +45,15 @@
 			this.pnlLogDataViewer.Size = new System.Drawing.Size(950, 375);
 			this.pnlLogDataViewer.TabIndex = 0;
 			// 
-			// pnlLogDataAnalysis
+			// btnDeleteLogData
 			// 
-			this.pnlLogDataAnalysis.Controls.Add(this.wcMaps);
-			this.pnlLogDataAnalysis.Location = new System.Drawing.Point(12, 12);
-			this.pnlLogDataAnalysis.Name = "pnlLogDataAnalysis";
-			this.pnlLogDataAnalysis.Size = new System.Drawing.Size(1216, 504);
-			this.pnlLogDataAnalysis.TabIndex = 3;
-			// 
-			// dgvLogData
-			// 
-			this.dgvLogData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvLogData.Location = new System.Drawing.Point(3, 3);
-			this.dgvLogData.Name = "dgvLogData";
-			this.dgvLogData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgvLogData.Size = new System.Drawing.Size(944, 328);
-			this.dgvLogData.TabIndex = 1;
+			this.btnDeleteLogData.Location = new System.Drawing.Point(84, 337);
+			this.btnDeleteLogData.Name = "btnDeleteLogData";
+			this.btnDeleteLogData.Size = new System.Drawing.Size(75, 23);
+			this.btnDeleteLogData.TabIndex = 5;
+			this.btnDeleteLogData.Text = "Apagar";
+			this.btnDeleteLogData.UseVisualStyleBackColor = true;
+			this.btnDeleteLogData.Click += new System.EventHandler(this.btnDeleteLogData_Click);
 			// 
 			// btnAnalysis
 			// 
@@ -72,35 +65,42 @@
 			this.btnAnalysis.UseVisualStyleBackColor = true;
 			this.btnAnalysis.Click += new System.EventHandler(this.btnAnalysis_Click);
 			// 
-			// btnDeleteLogData
+			// dgvLogData
 			// 
-			this.btnDeleteLogData.Location = new System.Drawing.Point(84, 337);
-			this.btnDeleteLogData.Name = "btnDeleteLogData";
-			this.btnDeleteLogData.Size = new System.Drawing.Size(75, 23);
-			this.btnDeleteLogData.TabIndex = 5;
-			this.btnDeleteLogData.Text = "Apagar";
-			this.btnDeleteLogData.UseVisualStyleBackColor = true;
-			this.btnDeleteLogData.Click += new System.EventHandler(this.btnDeleteLogData_Click);
+			this.dgvLogData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvLogData.Location = new System.Drawing.Point(3, 3);
+			this.dgvLogData.Name = "dgvLogData";
+			this.dgvLogData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dgvLogData.Size = new System.Drawing.Size(944, 328);
+			this.dgvLogData.TabIndex = 1;
+			// 
+			// pnlLogDataAnalysis
+			// 
+			this.pnlLogDataAnalysis.Controls.Add(this.wcMaps);
+			this.pnlLogDataAnalysis.Location = new System.Drawing.Point(12, 12);
+			this.pnlLogDataAnalysis.Name = "pnlLogDataAnalysis";
+			this.pnlLogDataAnalysis.Size = new System.Drawing.Size(1319, 610);
+			this.pnlLogDataAnalysis.TabIndex = 3;
 			// 
 			// wcMaps
 			// 
 			this.wcMaps.Location = new System.Drawing.Point(200, 3);
-			this.wcMaps.Size = new System.Drawing.Size(1013, 498);
+			this.wcMaps.Size = new System.Drawing.Size(1116, 604);
 			this.wcMaps.TabIndex = 1;
 			// 
 			// frmLogDataView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1240, 528);
-			this.Controls.Add(this.pnlLogDataViewer);
+			this.ClientSize = new System.Drawing.Size(1343, 634);
 			this.Controls.Add(this.pnlLogDataAnalysis);
+			this.Controls.Add(this.pnlLogDataViewer);
 			this.Name = "frmLogDataView";
 			this.Text = "..:: Capturas ::..";
 			this.Load += new System.EventHandler(this.frmLogDataView_Load);
 			this.pnlLogDataViewer.ResumeLayout(false);
-			this.pnlLogDataAnalysis.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvLogData)).EndInit();
+			this.pnlLogDataAnalysis.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}

@@ -1,50 +1,82 @@
 /*************************************************************
-project: <type project name here>
-author: <type your name here>
-description: <type what this file does>
+project: Racing Telemetry
+author: Anderson Antonio Lopes Rodrigues
+description: Algoritmo para coleta de informações do veículo
 *************************************************************/
  
 #include "RacingTelemetry_main.h"
 #include "SoftwareSerial.h"
-
-#define PMTK_SET_NMEA_UPDATE_1HZ "$PMTK220,1000*1F"
-#define PMTK_SET_NMEA_UPDATE_5HZ "$PMTK220,200*2C"
+#include "SD.h"
+ 
 #define PMTK_SET_NMEA_UPDATE_10HZ "$PMTK220,100*2F"
 #define PMTK_SET_NMEA_OUTPUT_RMCONLY "$PMTK314,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29"
-#define PMTK_SET_NMEA_OUTPUT_ALLDATA "$PMTK314,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0*28"
  
-SoftwareSerial gpsSerial(2, 3); 
-
+#define rxPin 2
+#define txPin 3
+#define sdChipSelect 10
+ 
+SoftwareSerial gpsSerial(rxPin, txPin);
+File dataFile;
+unsigned long lastSave;
+ 
 void setup()
 {
-  Serial.begin(9600);
-  gpsSerial.begin(9600);
-  
-   // uncomment this line to turn on only the "minimum recommended" data for high update rates!
-  gpsSerial.println(PMTK_SET_NMEA_OUTPUT_RMCONLY);
-  
-  // uncomment this line to turn on all the available data - for 9600 baud you'll want 1 Hz rate
-  //gpsSerial.println(PMTK_SET_NMEA_OUTPUT_ALLDATA);
-  
-  // Set the update rate
-  // 1 Hz update rate
-  //gpsSerial.println(PMTK_SET_NMEA_UPDATE_1HZ);
-  // 5 Hz update rate- for 9600 baud you'll have to set the output to RMC only (see above)
-  //gpsSerial.println(PMTK_SET_NMEA_UPDATE_5HZ); 
-  // 10 Hz update rate - for 9600 baud you'll have to set the output to RMC only (see above)
-  gpsSerial.println(PMTK_SET_NMEA_UPDATE_10HZ);
+	Serial.begin(9600);
+	gpsSerial.begin(9600);
+	 
+	// Seta para recuperar somente sentenças NMEA RMC
+	gpsSerial.println(PMTK_SET_NMEA_OUTPUT_RMCONLY);
+	 
+	// Seta a frequencia de funcionamento do GPS para 10HZ/seg
+	gpsSerial.println(PMTK_SET_NMEA_UPDATE_10HZ);
+	 
+	pinMode(txPin, OUTPUT);
+	 
+	if (!SD.begin(sdChipSelect)) {
+		Serial.println("Cartão falhou, ou não está presente");
+		delay(3000);
+		return;
+	}
+	 
+	dataFile = SD.open("LogData.log", FILE_WRITE);
+	Serial.println("Cartão SD OK!");
+	delay(3000);
 }
-
-void loop() 
+ 
+void loop()
 {
-  // For one second we parse GPS data and report some key values
-  for (unsigned long start = millis(); millis() - start < 200;)
-  {
-    while (gpsSerial.available())
-    {
-      char c = gpsSerial.read();
-      Serial.write(c); // uncomment this line if you want to see the GPS data flowing
-      
-    }
-  }
+	 
+	// Captura os dados do GPS a cada 0,1 segundo
+	for (unsigned long start = millis(); millis() - start < 100;)
+	{
+		while (gpsSerial.available())
+		{
+			//Recupera dados do GPS
+			char c = gpsSerial.read();
+			//Transmite para o receptor
+			Serial.write(c);
+			 
+			//Caso esteja ok a gravação de dados no cartão SD, escreve os dados no arquivo
+			if (dataFile) {
+				dataFile.write(c);
+				 
+				//A cada 1 segundo, grava as informações do buffer no arquivo texto
+				if(millis() - lastSave > 1000) {
+					dataFile.flush();
+				}
+			}
+			 
+			lastSave = millis();
+		}
+	}
 }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

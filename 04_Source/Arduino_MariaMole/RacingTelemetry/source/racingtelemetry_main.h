@@ -5,6 +5,16 @@
  
 #include <arduino.h>
 #include <SoftwareSerial.h>
+#include <SdInfo.h>
+#include <SdFatUtil.h>
+#include <SdFatmainpage.h>
+#include <SdFat.h>
+#include <Sd2PinMap.h>
+#include <Sd2Card.h>
+#include <FatStructs.h>
+#include <SD.h>
+#include <ThreadController.h>
+#include <Thread.h>
  
 //-------------------------------------------------------------------
  
@@ -34,4 +44,6 @@ void setup();
 //-------------------------------------------------------------------
 #endif
 //-------------------------------------------------------------------
+ 
+ 
  

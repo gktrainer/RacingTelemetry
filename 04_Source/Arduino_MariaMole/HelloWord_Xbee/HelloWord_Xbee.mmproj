@@ -1,6 +1,6 @@
 <mm_project serial_port="COM6" board="Arduino Uno" programmer="" includePaths="" libPaths="" libs="" default="no" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
   <files>
-    <file name="HelloWord_Xbee_main.cpp" open="yes" />
+    <file name="HelloWord_Xbee_main.cpp" open="no" />
     <file name="helloword_xbee_main.h" open="no" />
   </files>
   <extras>
